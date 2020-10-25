@@ -14,7 +14,7 @@ def preprocess(input_file,out_file,max_len,min_len):
                         out_fp.write(sent.lower()+"\n")
 
 if __name__ == "__main__":
-    opt,args=getopt.getopt(sys.argv[1:],"i:o:",["max_len=","min_len="])
+    opt,args=getopt.getopt(sys.argv[1:],"i:o:")
     input_file=None
     out_file=None
     max_len=30
@@ -22,12 +22,8 @@ if __name__ == "__main__":
     for o,a in opt:
         if(o=="-i"):input_file=a
         if(o=="-o"):out_file=a
-        if(o=="--max_len"):max_len=int(a)
-        if(o=="--min_len"):min_len=int(a)
     if(input_file==None or out_file==None):
-        print("use argument -i as input file,-o as out file\n \
-            --max_len as maximum number of tokens contained in a sentence  \n \
-            --min_len as minimum number of tokens contained in a sentence")
+        print("use argument -i as input file,-o as out file\n")
         sys.exit()
     if((not os.path.exists(input_file)) or (not os.path.isfile(input_file))):
         print("use argument input_file not exists or is not a file")
